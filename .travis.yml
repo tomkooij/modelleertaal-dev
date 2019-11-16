@@ -16,8 +16,6 @@ before_deploy:
   - cp config.js _build/
   - cp -R scripts _build/
   - cp -R modellen _build/
-  - cp index.html _build/
-  - cp config.js _build/
   - touch _build/.nojekyll
 
 deploy:
@@ -25,6 +23,11 @@ deploy:
     skip_cleanup: true
     github_token: $GITHUB_TOKEN
     local_dir: _build
+    keep_history: true
+    local_dir: public
+    repo: tomkooij/modelleertaal-dev
+    target_branch: master
+    verbose: true
     on:
       branch: master
       node_js: node
